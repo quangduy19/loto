@@ -129,9 +129,9 @@
         alert("hết số rồi")
         return
       }
-      let tmp = Math.floor(Math.random() * 90)
+      let tmp = Math.floor(Math.random() * 90) + 1
       while (result.includes(tmp)) {
-        tmp = Math.floor(Math.random() * 90)
+        tmp = Math.floor(Math.random() * 90) + 1
       }
       result = [...result, tmp]
 
