@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .door {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: url('./background.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .group-btn {
+      max-width: 400px;
+      min-width: 350px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .number {
+      font-size: 150px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: blueviolet;
+      text-shadow: 2px 2px #00ff00;
+    }
+    .result {
+      background-color: white;
+      width: 90%;
+      margin: 0 20px;
+      min-height: 100px;
+      border-radius: 20px;
+      padding: 10px;
+      font-size: 20px;
+    }
+    .snip1582 {
+      background-color: #5666a5;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: 'BenchNine', Arial, sans-serif;
+      font-size: 1em;
+      font-size: 22px;
+      line-height: 1em;
+      outline: none;
+      padding: 12px 40px 10px;
+      position: relative;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .snip1582:before,
+    .snip1582:after {
+      border-color: transparent;
+      -webkit-transition: all 0.25s;
+      transition: all 0.25s;
+      border-style: solid;
+      border-width: 0;
+      content: "";
+      height: 24px;
+      position: absolute;
+      width: 24px;
+    }
+
+    .snip1582:before {
+      border-color: #5666a5;
+      border-top-width: 2px;
+      left: 0px;
+      top: -5px;
+    }
+
+    .snip1582:after {
+      border-bottom-width: 2px;
+      border-color: #5666a5;
+      bottom: -5px;
+      right: 0px;
+    }
+
+    .snip1582:hover,
+    .snip1582.hover {
+      background-color: #5666a5;
+    }
+
+    .snip1582:hover:before,
+    .snip1582.hover:before,
+    .snip1582:hover:after,
+    .snip1582.hover:after {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="door">
+    <div class="group-btn">
+      <button class="snip1582" onclick="random()">Random</button>
+      <button class="snip1582" onclick="reset()">Reset</button>
+    </div>
+    <div id="number" class="number"></div>
+    <div id="result" class="result"></div>
+  </div>
+  <script>
+    let result = []
+    let elResult = document.getElementById("result")
+    let elNumber = document.getElementById("number")
+    
+    function reset() {
+      result = []
+      elNumber.innerHTML = ""
+      elResult.innerHTML = ""
+    }
+
+    function random() {
+      if (result.length === 90) {
+        alert("hết số rồi")
+        return
+      }
+      let tmp = Math.floor(Math.random() * 90)
+      while (result.includes(tmp)) {
+        tmp = Math.floor(Math.random() * 90)
+      }
+      result = [...result, tmp]
+
+      elNumber.innerHTML = tmp
+      elResult.innerHTML = result.join("-")
+    }
+  </script>
+</body>
+</html>
